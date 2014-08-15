@@ -46,17 +46,22 @@
                 android:src="@drawable/ic_mp_current_playlist_btn"
                 android:layout_width="85dip"
                 android:layout_height="54dip"
-                android:layout_marginTop="14dip" />
+                android:layout_marginTop="15dip" />
 
            <ImageButton android:id="@+id/shuffle"
                 android:layout_width="85dip"
                 android:layout_height="54dip"
-                android:layout_marginTop="20dip" />
+                android:layout_marginTop="15dip" />
 
            <ImageButton android:id="@+id/repeat"
                 android:layout_width="85dip"
                 android:layout_height="54dip"
-                android:layout_marginTop="20dip" />
+                android:layout_marginTop="15dip" />
+
+           <ImageButton android:id="@+id/lrcmod"
+                android:layout_width="85dip"
+                android:layout_height="54dip"
+                android:layout_marginTop="15dip" />
 
         </LinearLayout>
 
@@ -135,6 +140,16 @@
             android:layout_gravity="center_vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="0dip"
+        android:orientation="horizontal"
+        android:layout_weight="1.0">
+
+        <include layout="@layout/lyric_layout" />
 
     </LinearLayout>
 

@@ -71,17 +71,17 @@
     <string name="play_all">Play all</string>
 
     <!-- Delete confirmation dialog when deleting an entire artist -->
-    <string name="delete_artist_desc">All songs by <xliff:g id="artist">%s</xliff:g> will be permanently deleted from the SD card.</string>
+    <string name="delete_artist_desc">All songs by <xliff:g id="artist">%s</xliff:g> will be permanently deleted from the device.</string>
     <!-- Delete confirmation dialog when deleting an entire artist -->
     <string name="delete_artist_desc_nosdcard" msgid="1843750591006508005">All songs by <xliff:g id="artist">%s</xliff:g> will be permanently deleted from USB storage.</string>
 
     <!-- Delete confirmation dialog when deleting an entire album -->
-    <string name="delete_album_desc">The entire album \"<xliff:g id="album">%s</xliff:g>\" will be permanently deleted from the SD card.</string>
+    <string name="delete_album_desc">The entire album \"<xliff:g id="album">%s</xliff:g>\" will be permanently deleted from the device.</string>
     <!-- Delete confirmation dialog when deleting an entire album -->
     <string name="delete_album_desc_nosdcard" msgid="535515999268177079">The entire album \"<xliff:g id="album">%s</xliff:g>\" will be permanently deleted from USB storage.</string>
 
     <!-- Delete confirmation dialog when deleting a single song -->
-    <string name="delete_song_desc">\"<xliff:g id="song">%s</xliff:g>\" will be permanently deleted from the SD card.</string>
+    <string name="delete_song_desc">\"<xliff:g id="song">%s</xliff:g>\" will be permanently deleted from the device.</string>
     <!-- Delete confirmation dialog when deleting a single song -->
     <string name="delete_song_desc_nosdcard" msgid="1856800468541831408">\"<xliff:g id="song">%s</xliff:g>\" will be permanently deleted from USB storage.</string>
 
@@ -159,19 +159,19 @@
     <!-- label underneath icon used to indicate that no sd card is present -->
     <string name="sdcard_missing_message_nosdcard" msgid="1169260755336159747">Your phone does not have USB storage.</string>
     <!-- label underneath icon used to indicate that the sd card is present, but currently unavailable -->
-    <string name="sdcard_busy_title">SD card unavailable</string>
+    <string name="sdcard_busy_title">Flash unavailable</string>
     <!-- label underneath icon used to indicate that the sd card is present, but currently unavailable -->
     <string name="sdcard_busy_title_nosdcard" msgid="1162763571147174655">USB storage unavailable</string>
     <!-- label underneath icon used to indicate sd card is mounted to your computer via USB -->
-    <string name="sdcard_busy_message">Sorry, your SD card is busy.</string>
+    <string name="sdcard_busy_message">Sorry, your Flash is busy.</string>
     <!-- label underneath icon used to indicate sd card is mounted to your computer via USB -->
     <string name="sdcard_busy_message_nosdcard" msgid="8071868348072728830">Sorry, your USB storage is busy.</string>
     <!-- Title of screen when there was an error accessing the sd card -->
-    <string name="sdcard_error_title">SD card error</string>
+    <string name="sdcard_error_title">Flash error</string>
     <!-- Title of screen when there was an error accessing the sd card -->
     <string name="sdcard_error_title_nosdcard" msgid="165682155008600643">USB storage error</string>
     <!-- label underneath icon used to indicate there was an error accessing the sd card -->
-    <string name="sdcard_error_message">An error was encountered on your SD card.</string>
+    <string name="sdcard_error_message">An error was encountered on your Flash.</string>
     <!-- label underneath icon used to indicate there was an error accessing the sd card -->
     <string name="sdcard_error_message_nosdcard" msgid="4574563894036627855">An error was encountered on your USB storage.</string>
     <!-- Default name of artist that doesn't have a name in the metadata -->
@@ -319,5 +319,27 @@
 
     <!-- Menu text for the item controlling the audio effects panel [CHAR LIMIT=15] -->
     <string name="effectspanel">Sound effects</string>
+
+    <string name="flash_busy_title">Flash unavailable</string>
+    <string name="flash_busy_message">Sorry,your Flash is busy.</string>
+    <string name="No_Music">No music files, please copy the file!</string>
+    <string name="eq_select">EQ Select</string>
+    <string name="alert_dialog_ok">OK</string>
+    <string name="usereq_select">User EQ Select</string>
+    <string name="basseq_select">BassBoost Select</string>
+    <string name="eq_normal">Normal</string>
+    <string name="eq_classical">Classical</string>
+    <string name="eq_jazz">Jazz</string>
+    <string name="eq_pop">Pop</string>
+    <string name="eq_rock">Rock</string>
+    <string name="eq_bassboost">Bassboost</string>
+    <string name="eq_user">User EQ</string>
+    <string name="lrcwait">It is searching lyric, Please wait a moment...</string>
+    <string name="search_lrc_down">Lyrics come from</string>
+    <string name="lrcsearch">Searching...</string>
+    <string name="lyric">Lyric</string>
+    <string name="lyric_search_false">Lyric search failed</string>
+    <string name="delete_dialog_body">Deleting music, Please wait....</string>
+
 </resources>
 

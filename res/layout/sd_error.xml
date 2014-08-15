@@ -20,7 +20,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:background="@drawable/ic_mp_sd_card"
+        android:background="@drawable/flash"
         android:visibility="gone" />
 
     <TextView

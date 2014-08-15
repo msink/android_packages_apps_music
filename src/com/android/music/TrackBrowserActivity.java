@@ -140,6 +140,7 @@ public class TrackBrowserActivity extends ListActivity
                 MediaStore.Audio.Media._ID,
                 MediaStore.Audio.Media.TITLE,
                 MediaStore.Audio.Media.DATA,
+                MediaStore.Audio.Media.DISPLAY_NAME,
                 MediaStore.Audio.Media.ALBUM,
                 MediaStore.Audio.Media.ARTIST,
                 MediaStore.Audio.Media.ARTIST_ID,
@@ -463,7 +464,7 @@ public class TrackBrowserActivity extends ListActivity
                         // compilation album
                         fancyName = mTrackCursor.getString(idx);
                     }    
-                    cursor.deactivate();
+                    cursor.close();
                 }
                 if (fancyName == null || fancyName.equals(MediaStore.UNKNOWN_STRING)) {
                     fancyName = getString(R.string.unknown_album_name);
@@ -492,7 +493,7 @@ public class TrackBrowserActivity extends ListActivity
                         cursor.moveToFirst();
                         fancyName = cursor.getString(0);
                     }
-                    cursor.deactivate();
+                    cursor.close();
                 }
             }
         } else if (mGenre != null) {
@@ -507,7 +508,7 @@ public class TrackBrowserActivity extends ListActivity
                     cursor.moveToFirst();
                     fancyName = cursor.getString(0);
                 }
-                cursor.deactivate();
+                cursor.close();
             }
         }
 

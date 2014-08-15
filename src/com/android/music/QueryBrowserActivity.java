@@ -28,6 +28,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.ServiceConnection;
+import android.content.res.Configuration;
 
 import android.database.Cursor;
 import android.database.DatabaseUtils;
@@ -188,6 +189,11 @@ implements MusicUtils.Defs, ServiceConnection
     public Object onRetainNonConfigurationInstance() {
         mAdapterSent = true;
         return mAdapter;
+    }
+
+    @Override
+    public void onConfigurationChanged(Configuration config) {
+        super.onConfigurationChanged(config);
     }
     
     @Override

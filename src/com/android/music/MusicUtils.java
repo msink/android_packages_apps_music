@@ -42,6 +42,7 @@ import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Environment;
+import android.os.Handler;
 import android.os.ParcelFileDescriptor;
 import android.os.RemoteException;
 import android.provider.MediaStore;
@@ -90,6 +91,8 @@ public class MusicUtils {
         public final static int EFFECTS_PANEL = 13;
         public final static int CHILD_MENU_BASE = 14; // this should be the last item
     }
+
+    static Handler handler = new Handler();
 
     public static String makeAlbumsLabel(Context context, int numalbums, int numsongs, boolean isUnknown) {
         // There are two formats for the albums/songs information:
@@ -511,10 +514,15 @@ public class MusicUtils {
             c.close();
         }
 
-        String message = context.getResources().getQuantityString(
+        final String message = context.getResources().getQuantityString(
                 R.plurals.NNNtracksdeleted, list.length, Integer.valueOf(list.length));
-        
-        Toast.makeText(context, message, Toast.LENGTH_SHORT).show();
+        final Context mContext = context;
+        handler.post(new Runnable() {
+            public void run() {
+                Toast.makeText(mContext, message, Toast.LENGTH_SHORT).show();
+            }
+        });
+
         // We deleted a number of tracks, which could affect any number of things
         // in the media content domain, so update everything.
         context.getContentResolver().notifyChange(Uri.parse("content://media"), null);
@@ -655,46 +663,23 @@ public class MusicUtils {
             return;
         }
 
-        String status = Environment.getExternalStorageState();
-        int title, message;
+        String status = Environment.getFlashStorageState();
+        int title = R.string.flash_busy_title;
+        int message = R.string.flash_busy_message;
 
-        if (android.os.Environment.isExternalStorageRemovable()) {
-            title = R.string.sdcard_error_title;
-            message = R.string.sdcard_error_message;
-        } else {
-            title = R.string.sdcard_error_title_nosdcard;
-            message = R.string.sdcard_error_message_nosdcard;
-        }
-        
         if (status.equals(Environment.MEDIA_SHARED) ||
                 status.equals(Environment.MEDIA_UNMOUNTED)) {
-            if (android.os.Environment.isExternalStorageRemovable()) {
-                title = R.string.sdcard_busy_title;
-                message = R.string.sdcard_busy_message;
-            } else {
-                title = R.string.sdcard_busy_title_nosdcard;
-                message = R.string.sdcard_busy_message_nosdcard;
-            }
+            title = R.string.flash_busy_title;
+            message = R.string.flash_busy_message;
         } else if (status.equals(Environment.MEDIA_REMOVED)) {
-            if (android.os.Environment.isExternalStorageRemovable()) {
-                title = R.string.sdcard_missing_title;
-                message = R.string.sdcard_missing_message;
-            } else {
-                title = R.string.sdcard_missing_title_nosdcard;
-                message = R.string.sdcard_missing_message_nosdcard;
-            }
+            title = R.string.flash_busy_title;
+            message = R.string.flash_busy_message;
         } else if (status.equals(Environment.MEDIA_MOUNTED)){
-            // The card is mounted, but we didn't get a valid cursor.
-            // This probably means the mediascanner hasn't started scanning the
-            // card yet (there is a small window of time during boot where this
-            // will happen).
-            a.setTitle("");
-            Intent intent = new Intent();
-            intent.setClass(a, ScanningProgress.class);
-            a.startActivityForResult(intent, Defs.SCAN_DONE);
-        } else if (!TextUtils.equals(mLastSdStatus, status)) {
-            mLastSdStatus = status;
-            Log.d(TAG, "sd card: " + status);
+            message = R.string.No_Music;
+            title = R.string.No_Music;
+        } else {
+            message = R.string.No_Music;
+            title = R.string.No_Music;
         }
 
         a.setTitle(title);
@@ -1253,7 +1238,7 @@ public class MusicUtils {
                 artist.setText(artistName);
                 //mNowPlayingView.setOnFocusChangeListener(mFocuser);
                 //mNowPlayingView.setOnClickListener(this);
-                nowPlayingView.setVisibility(View.VISIBLE);
+                //nowPlayingView.setVisibility(View.VISIBLE);
                 nowPlayingView.setOnClickListener(new View.OnClickListener() {
 
                     public void onClick(View v) {
@@ -1360,5 +1345,18 @@ public class MusicUtils {
                 entry.dump(out);
             }
         }
+    }
+
+    public final static int EQ_EQUALIZER = 0;
+    public final static int EQ_BASSBOOST = 1;
+
+    private static boolean isLyric = false;
+
+    public static void setisLyric(boolean tempisLyric) {
+        isLyric = tempisLyric;
+    }
+
+    public static boolean getisLyric() {
+        return isLyric;
     }
 }
